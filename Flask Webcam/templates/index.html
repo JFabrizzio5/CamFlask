@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam en Flask</title>
+</head>
+<body>
+    <h1>Video de la Webcam</h1>
+    
+    <!-- Botón para iniciar la cámara con ID1 -->
+    <form method="POST" action="/start_camera">
+        <input type="hidden" name="user_id" value="id1">
+        <button type="submit">ID1</button>
+    </form>
+
+    <!-- Botón para iniciar la cámara con ID2 -->
+    <form method="POST" action="/start_camera">
+        <input type="hidden" name="user_id" value="id2">
+        <button type="submit">ID2</button>
+    </form>
+    
+    <!-- Botón para detener la cámara -->
+    <form method="POST" action="/stop_camera">
+        <input type="hidden" name="user_id" value="{{ user_id }}">
+        <button type="submit">Stop Camera</button>
+    </form>
+
+    <!-- Mostrar el video de la cámara -->
+    <img src="{{ url_for('video_feed', user_id=user_id) }}" width="640" height="480">
+</body>
+</html>
